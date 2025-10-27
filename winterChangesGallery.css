@@ -1,0 +1,46 @@
+.custom-container{
+	color : black;
+}.gallery-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 1rem;
+}
+
+.comparison-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+}
+
+.version {
+    border: 1px solid #d8dde6;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.old {
+    background: #fff8f8;
+    border-color: #fbcaca;
+}
+
+.new {
+    background: #f5fff8;
+    border-color: #9be5a1;
+}
+
+h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.desc {
+    font-size: 0.9rem;
+    color: #666;
+}

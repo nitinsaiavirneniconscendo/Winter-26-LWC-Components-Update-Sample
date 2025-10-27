@@ -1,0 +1,210 @@
+<template>
+    <lightning-card title="⚡ Salesforce Winter ’26 — Lightning Web Components Changes Gallery">
+        <div class="gallery-container">
+
+            <!-- 1. Accordion -->
+            <section>
+                <h2>1️⃣ lightning-accordion — Section Closing Behavior</h2>
+                <p class="desc">Previously a single accordion section could be closed even when <code>allow-multiple-sections-open</code> was false. Now it stays open.</p>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <h3>Before</h3>
+                        <div class="slds-accordion">
+                            <section class="slds-accordion__section slds-is-open">
+                                <div class="slds-accordion__summary">Section A (Closable)</div>
+                                <div class="slds-accordion__content">Old behavior — could be closed manually.</div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="version new">
+                        <h3>After</h3>
+                        <lightning-accordion allow-multiple-sections-open>
+                            <lightning-accordion-section name="a" label="Section A">
+                                Now a single section can’t be closed.
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Datatable -->
+            <section>
+                <h2>2️⃣ lightning-datatable — Disabled Rows & Highlight Class</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <h3>Before</h3>
+                        <table class="slds-table slds-table_bordered">
+                            <thead><tr><th>Name</th><th>Industry</th><th>Revenue</th></tr></thead>
+                            <tbody>
+                                <tr><td>Acme Corp</td><td>Tech</td><td>$1.2M</td></tr>
+                                <tr><td>Blue Ocean</td><td>Finance</td><td>$980K</td></tr>
+                                <tr><td>Sunrise Foods</td><td>Retail</td><td>$430K</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="version new">
+                        <h3>After</h3>
+                        <lightning-datatable
+                            key-field="id"
+                            data={data}
+                            columns={columns}
+                            disabled-rows={disabledRows}
+                            hide-borders>
+                        </lightning-datatable>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Dual Listbox -->
+            <section>
+                <h2>3️⃣ lightning-dual-listbox — Type-Ahead & Accessibility</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <h3>Before</h3>
+                        <div class="slds-box">Listbox items only navigable by arrow keys.</div>
+                    </div>
+                    <div class="version new">
+                        <h3>After</h3>
+                        <lightning-dual-listbox name="demo" label="Select Options" options={options} value={value}></lightning-dual-listbox>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Formatted Name -->
+            <section>
+                <h2>4️⃣ lightning-formatted-name — Locale Attribute</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <h3>Before</h3>
+                        <div>Maria Lopez</div>
+                    </div>
+                    <div class="version new">
+                        <h3>After</h3>
+                        <lightning-formatted-name first-name="Maria" last-name="Lopez" locale="fr-FR"></lightning-formatted-name>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Input -->
+            <section>
+                <h2>5️⃣ lightning-input — Checkbox & Time Step</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <h3>Before</h3>
+                        <input type="checkbox" checked /> <label>Read-only required (simulated)</label><br />
+                        <input type="time" />
+                    </div>
+                    <div class="version new">
+                        <h3>After</h3>
+                        <lightning-input type="checkbox" label="New Read-only Checkbox" checked readonly></lightning-input>
+                        <lightning-input type="time" label="Time Picker" time-step-minutes="5"></lightning-input>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Input Name -->
+            <section>
+                <h2>6️⃣ lightning-input-name — Locale Support</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <div>First: John<br />Last: Smith</div>
+                    </div>
+                    <div class="version new">
+                        <lightning-input-name first-name="John" last-name="Smith" locale="ja-JP"></lightning-input-name>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. OmniStudio FlexCard -->
+            <section>
+                <h2>7️⃣ lightning-omnistudio-flexcard — Embedded FlexCard</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <div>❌ Previously needed wrapper to display OmniStudio FlexCard.</div>
+                    </div>
+                    <div class="version new">
+                        <lightning-omnistudio-flexcard card-name="AccountSummaryFlexCard"></lightning-omnistudio-flexcard>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. OmniScript -->
+            <section>
+                <h2>8️⃣ lightning-omnistudio-omniscript — Direct Embed</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <div>❌ Couldn’t embed OmniScript directly in LWC.</div>
+                    </div>
+                    <div class="version new">
+                        <lightning-omnistudio-omniscript script-name="AccountOnboardingScript"></lightning-omnistudio-omniscript>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. Output Field -->
+            <section>
+                <h2>9️⃣ lightning-output-field — Read-only Checkbox Styling</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <input type="checkbox" checked disabled /> (Old plain disabled look)
+                    </div>
+                    <div class="version new">
+                        <lightning-output-field value={checkboxValue}></lightning-output-field>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10. Select -->
+            <section>
+                <h2>🔟 lightning-select — Accessibility Roles</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <select><option>Option 1</option><option>Option 2</option></select>
+                    </div>
+                    <div class="version new">
+                        <lightning-select label="New Accessible Select">
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                        </lightning-select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 11. Textarea -->
+            <section>
+                <h2>1️⃣1️⃣ lightning-textarea — Read-only Style</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <textarea maxlength="20">Old Textarea Content</textarea>
+                    </div>
+                    <div class="version new">
+                        <lightning-textarea label="New Textarea" maxlength="20" readonly>
+                            New read-only rendering (auto height)
+                        </lightning-textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 12. Tree Grid -->
+            <section>
+                <h2>1️⃣2️⃣ lightning-tree-grid — Disabled Rows & Hidden Borders</h2>
+                <div class="comparison-container">
+                    <div class="version old">
+                        <div class="slds-box slds-theme_default">Static mockup of tree grid (no disabled rows).</div>
+                    </div>
+                    <div class="version new">
+                        <lightning-tree-grid
+                            key-field="id"
+                            columns={treeColumns}
+                            data={treeData}
+                            disabled-rows={disabledRowsTree}
+                            hide-borders
+                            hide-table-header>
+                        </lightning-tree-grid>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </lightning-card>
+</template>
